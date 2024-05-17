@@ -121,11 +121,13 @@ function gameOver(winner) {
   document.querySelector(".winner-section").classList.remove("hacker-color");
 
   if(winner == "Hacker") {
+    loseGame();
     let evilAudio = new Audio("evil-laugh.mp3");
     evilAudio.play();
     document.querySelector(".winner-message").innerHTML = hackerWinnerMessage;
     document.querySelector(".winner-section").classList.add("hacker-color");
   } else {
+    winGame();
     let ohNoAudio = new Audio("Oh-no-sound-effect.mp3");
     ohNoAudio.play();
     document.querySelector(".winner-message").innerHTML = playerWinnerMessage;
@@ -289,3 +291,38 @@ function revealCards(){
   hackerCardEl.querySelector(".text").innerHTML = hackerCard.description;
   hackerCardEl.querySelector(".power").innerHTML = hackerCard.power;
 }
+
+let points = 0; // Store points outside a class for simplicity
+
+const pointsElement = document.querySelector(".points"); // Get reference to point element
+
+function loadPoints() {
+  const storedPoints = localStorage.getItem("gamePoints");
+  if (storedPoints) {
+    points = parseInt(storedPoints); // Parse stored points as a number
+  }
+  pointsElement.textContent = points + " pts"; // Update displayed points
+}
+
+function savePoints() {
+  localStorage.setItem("gamePoints", points);
+}
+
+function winGame() {
+  points += 100;
+  pointsElement.textContent = points + " pts"; // Update displayed points
+  savePoints();
+}
+
+function loseGame() {
+  points = Math.max(points - 50, 0);
+  pointsElement.textContent = points + " pts"; // Update displayed points
+  savePoints();
+}
+
+// Load points on page load
+loadPoints();
+
+// Call winGame or loseGame based on your game logic (replace with your logic)
+//winGame(); // Replace with your win condition
+// loseGame(); // Replace with your lose condition

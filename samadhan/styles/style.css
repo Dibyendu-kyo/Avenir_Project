@@ -472,3 +472,29 @@ button[disabled=true] {
   height: 50vh;
 }
 
+/* nav {
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+} */
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 20px;
+}
+
+.logo {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color:aliceblue;
+  font-size: 10px;
+  margin-right: 2px;
+  font-weight: bold;
+}
+
+.points {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-weight:bolder;
+  color: aliceblue;
+}
